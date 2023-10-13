@@ -51,14 +51,5 @@ pipeline "send_request" {
     })
   }
 
-  output "response_body" {
-    value = step.http.send_request.response_body
-  }
-  output "response_headers" {
-    value = step.http.send_request.response_headers
-  }
-  output "status_code" {
-    value = step.http.send_request.status_code
-  }
 }
 
