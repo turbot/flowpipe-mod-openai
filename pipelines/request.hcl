@@ -1,22 +1,27 @@
+// usage: flowpipe pipeline run send_request --pipeline-arg system_content="You are a standup comedian." --pipeline-arg user_content="Tell a joke about programmers."
 pipeline "send_request" {
   description = "Make a request to the GPT-3.5 language model."
 
-  param "api_key" {
-    type    = string
-    default = var.token
+  param "token" {
+    type        = string
+    description = "OpenAI API key used for authentication."
+    default     = var.token
   }
 
   param "model" {
-    type = string
-    default = "gpt-3.5-turbo"
+    type        = string
+    description = "ID of the model to use. See the [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API."
+    default     = "gpt-3.5-turbo"
   }
 
   param "system_content" {
-    type = string
+    type        = string
+    description = "The role of the messages author. System in this case."
   }
 
   param "user_content" {
-    type = string
+    type        = string
+    description = "The role of the messages author. User in this case."
   }
 
   step "http" "send_request" {
@@ -26,7 +31,7 @@ pipeline "send_request" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.api_key}"
+      Authorization = "Bearer ${param.token}"
     }
 
     request_body = jsonencode({
