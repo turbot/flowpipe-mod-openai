@@ -24,6 +24,18 @@ pipeline "send_request" {
     description = "The role of the messages author. User in this case."
   }
 
+  param "max_tokens" {
+    type        = number
+    description = "The maximum number of tokens to generate in the chat completion."
+    default     = 50
+  }
+
+  param "temperature" {
+    type        = number
+    description = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."
+    default     = 1
+  }
+
   step "http" "send_request" {
     title  = "Send request to GPT-3.5 language model."
     method = "post"
@@ -36,8 +48,8 @@ pipeline "send_request" {
 
     request_body = jsonencode({
       "model" : "${param.model}",
-      "temperature" : 1,
-      "max_tokens" : 10,
+      "temperature" : "${param.temperature}",
+      "max_tokens" : "${param.max_tokens}",
       "messages" : [
         {
           "role" : "system",
@@ -51,5 +63,9 @@ pipeline "send_request" {
     })
   }
 
+  output "gpt_responses" {
+    value = join(" ", [for choice in jsondecode(step.http.send_request.response_body).choices : choice.message.content])
+  }
 }
+
 
