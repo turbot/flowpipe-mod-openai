@@ -4,7 +4,7 @@ mod "openai" {
   color         = "#000000"
   documentation = file("./docs/index.md")
   icon          = "/images/flowpipe/mods/turbot/openai.svg"
-  categories    = ["openai"]
+  categories    = ["openai", "library"]
 
   opengraph {
     title       = "OpenAI"
