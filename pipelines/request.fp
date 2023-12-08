@@ -67,8 +67,8 @@ pipeline "send_request" {
     })
   }
 
-  output "gpt_responses" {
-    value = join(" ", [for choice in jsondecode(step.http.send_request.response_body).choices : choice.message.content])
+  output "choices" {
+    value = step.http.send_request.response_body.choices
   }
 }
 
