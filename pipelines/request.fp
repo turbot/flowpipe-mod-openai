@@ -6,10 +6,10 @@ pipeline "send_request" {
     type = "featured"
   }
 
-  param "api_key" {
+  param "cred" {
     type        = string
-    description = "OpenAI API key used for authentication."
-    default     = var.api_key
+    description = "Name for credentials to use. If not provided, the default credentials will be used."
+    default     = "default"
   }
 
   param "model" {
@@ -47,7 +47,7 @@ pipeline "send_request" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.api_key}"
+      Authorization = "Bearer ${credential.openai[param.cred].api_key}"
     }
 
     request_body = jsonencode({
