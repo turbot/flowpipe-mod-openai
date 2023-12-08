@@ -1,12 +1,15 @@
-// usage: flowpipe pipeline run send_request --pipeline-arg system_content="You are a standup comedian." --pipeline-arg user_content="Tell a joke about programmers."
 pipeline "send_request" {
   title       = "Create a model response for the given chat conversation."
   description = "Make a request to the GPT-3.5 language model."
 
-  param "token" {
+  tags = {
+    type = "featured"
+  }
+
+  param "api_key" {
     type        = string
     description = "OpenAI API key used for authentication."
-    default     = var.token
+    default     = var.api_key
   }
 
   param "model" {
@@ -44,7 +47,7 @@ pipeline "send_request" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${param.token}"
+      Authorization = "Bearer ${param.api_key}"
     }
 
     request_body = jsonencode({

@@ -1,15 +1,13 @@
 # OpenAI Mod for Flowpipe
 
 A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
+
 - Send chat request
 - And more!
-
-![image](https://github.com/turbot/flowpipe-mod-openai/blob/update-docs/docs/images/flowpipe_test_run.png?raw=true)
 
 ## Documentation
 
 - **[Pipelines →](https://hub.flowpipe.io/mods/turbot/openai/pipelines)**
-- **[Triggers →](https://hub.flowpipe.io/mods/turbot/openai/triggers)**
 
 ## Getting started
 
@@ -34,15 +32,15 @@ cd flowpipe-mod-openai
 Configure your credentials:
 
 ```sh
-cp flowpipe.pvars.example flowpipe.pvars
-vi flowpipe.pvars
+cp flowpipe.fpvars.example flowpipe.fpvars
+vi flowpipe.fpvars
 ```
 
-It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.pvars` file.
+It's recommended to configure credentials through [input variables](https://flowpipe.io/docs/using-flowpipe/mod-variables) by setting them in the `flowpipe.fpvars` file.
 
-**Note:** Credentials can also be passed in each pipeline run with `--pipeline-args access_token=glpat_Token123`.
+**Note:** Credentials can also be passed in each pipeline run with `--arg api_key=sk-a1b2c3d4e5f6g7h8i9j10k11l12m1`.
 
-Additional input variables may be defined in the mod's `variables.hcl` file that can be configured to better match your environment and requirements.
+Additional input variables may be defined in the mod's `variables.fp` file that can be configured to better match your environment and requirements.
 
 Variables with defaults set do not need to be explicitly set, but it may be helpful to override them.
 
@@ -65,10 +63,10 @@ flowpipe pipeline run list_projects
 To pass values into pipeline [parameters](https://flowpipe.io/docs/using-flowpipe/pipeline-parameters), use the following syntax:
 
 ```sh
-flowpipe pipeline run send_request --pipeline-arg system_content="You are a technical writer." --pipeline-arg user_content="How does Turbot manage 200 open-source repositories"
+flowpipe pipeline run send_request --arg system_content="You are a technical writer." --arg user_content="How does Turbot manage 200 open-source repositories"
 ```
 
-Multiple pipeline args can be passed in with separate `--pipeline-arg` flags.
+Multiple pipeline args can be passed in with separate `--arg` flags.
 
 For more information on passing arguments, please see [Pipeline Args](https://flowpipe.io/docs/using-flowpipe/pipeline-arguments).
 

@@ -1,14 +1,14 @@
 mod "openai" {
   title         = "OpenAI"
-  description   = "Run pipelines and triggers that interact with OpenAI."
-  color         = "#000000"
+  description   = "Run pipelines to supercharge your OpenAI workflows using Flowpipe."
+  color         = "#004D40"
   documentation = file("./docs/index.md")
   icon          = "/images/flowpipe/mods/turbot/openai.svg"
-  categories    = ["openai", "library"]
+  categories    = ["ai"]
 
   opengraph {
     title       = "OpenAI"
-    description = "Run pipelines and triggers that interact with OpenAI."
+    description = "Run pipelines to supercharge your OpenAI workflows using Flowpipe."
     image       = "/images/flowpipe/mods/turbot/openai-social-graphic.png"
   }
 }

@@ -12,6 +12,8 @@
 .DS_Store
 
 # Flowpipe variable files
-*.pvars
+*.fpvars
 
-tmp/
+# Flowpipe mod dependencies and logs
+.flowpipe
+*.cache.json
