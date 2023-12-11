@@ -6,7 +6,7 @@ repository: "https://github.com/turbot/flowpipe-mod-openai"
 
 A collection of [Flowpipe](https://flowpipe.io) pipelines that can be used to:
 
-- Send chat request
+- Create Chat Completion
 - And more!
 
 ## Documentation

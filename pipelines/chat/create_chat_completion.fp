@@ -1,6 +1,6 @@
-pipeline "send_request" {
-  title       = "Create a model response for the given chat conversation."
-  description = "Make a request to the GPT-3.5 language model."
+pipeline "create_chat_completion" {
+  title       = "Create Chat Completion"
+  description = "Creates a model response for the given chat conversation."
 
   tags = {
     type = "featured"
@@ -40,8 +40,7 @@ pipeline "send_request" {
     default     = 1
   }
 
-  step "http" "send_request" {
-    title  = "Send request to GPT-3.5 language model."
+  step "http" "create_chat_completion" {
     method = "post"
     url    = "https://api.openai.com/v1/chat/completions"
 
@@ -67,8 +66,8 @@ pipeline "send_request" {
     })
   }
 
-  output "choices" {
-    value = step.http.send_request.response_body.choices
+  output "chat_completion_choices" {
+    value = step.http.create_chat_completion.response_body.choices
   }
 }
 
