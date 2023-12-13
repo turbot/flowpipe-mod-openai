@@ -17,13 +17,6 @@ brew tap turbot/tap
 brew install flowpipe
 ```
 
-Clone:
-
-```sh
-git clone https://github.com/turbot/flowpipe-mod-openai.git
-cd flowpipe-mod-openai
-```
-
 ### Credentials
 
 By default, the following environment variables will be used for authentication:
