@@ -1,7 +1,7 @@
 mod "openai" {
   title         = "OpenAI"
   description   = "Run pipelines to supercharge your OpenAI workflows using Flowpipe."
-  color         = "#004D40"
+  color         = "#000000"
   documentation = file("./README.md")
   icon          = "/images/mods/turbot/openai.svg"
   categories    = ["ai"]
