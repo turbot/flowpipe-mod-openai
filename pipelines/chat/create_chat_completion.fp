@@ -66,9 +66,7 @@ pipeline "create_chat_completion" {
     })
   }
 
-  output "chat_completion_choices" {
+  output "choices" {
     value = step.http.create_chat_completion.response_body.choices
   }
 }
-
-
