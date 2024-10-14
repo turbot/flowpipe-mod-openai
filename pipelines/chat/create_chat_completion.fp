@@ -6,16 +6,15 @@ pipeline "create_chat_completion" {
     type = "featured"
   }
 
-  param "cred" {
-    type        = string
-    description = "Name for credentials to use. If not provided, the default credentials will be used."
-    default     = "default"
+  param "conn" {
+    type        = connection.openai
+    description = local.conn_param_description
+    default     = connection.openai.default
   }
 
   param "model" {
     type        = string
     description = "ID of the model to use. See the [model endpoint compatibility](https://platform.openai.com/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API."
-    default     = "gpt-3.5-turbo"
   }
 
   param "system_content" {
@@ -31,13 +30,11 @@ pipeline "create_chat_completion" {
   param "max_tokens" {
     type        = number
     description = "The maximum number of tokens to generate in the chat completion."
-    default     = 50
   }
 
   param "temperature" {
     type        = number
     description = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."
-    default     = 1
   }
 
   step "http" "create_chat_completion" {
@@ -46,7 +43,7 @@ pipeline "create_chat_completion" {
 
     request_headers = {
       Content-Type  = "application/json"
-      Authorization = "Bearer ${credential.openai[param.cred].api_key}"
+      Authorization = "Bearer ${param.conn.api_key}"
     }
 
     request_body = jsonencode({
