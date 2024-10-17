@@ -4,7 +4,7 @@ mod "openai" {
   color         = "#000000"
   documentation = file("./README.md")
   icon          = "/images/mods/turbot/openai.svg"
-  categories    = ["ai"]
+  categories    = ["library", "ai"]
 
   opengraph {
     title       = "OpenAI Mod for Flowpipe"
