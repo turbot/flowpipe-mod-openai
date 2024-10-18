@@ -3,7 +3,7 @@ pipeline "create_chat_completion" {
   description = "Creates a model response for the given chat conversation."
 
   tags = {
-    type = "featured"
+    recommended = "true"
   }
 
   param "conn" {
