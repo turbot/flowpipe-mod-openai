@@ -4,11 +4,17 @@ mod "openai" {
   color         = "#000000"
   documentation = file("./README.md")
   icon          = "/images/mods/turbot/openai.svg"
-  categories    = ["ai"]
+  categories    = ["library", "ai"]
 
   opengraph {
     title       = "OpenAI Mod for Flowpipe"
     description = "Run pipelines to supercharge your OpenAI workflows using Flowpipe."
     image       = "/images/mods/turbot/openai-social-graphic.png"
+  }
+
+  require {
+    flowpipe {
+      min_version = "1.0.0"
+    }
   }
 }

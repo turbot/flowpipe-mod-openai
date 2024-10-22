@@ -17,25 +17,25 @@ brew tap turbot/tap
 brew install flowpipe
 ```
 
-### Credentials
+### Connections
 
 By default, the following environment variables will be used for authentication:
 
 - `OPENAI_API_KEY`
 
-You can also create `credential` resources in configuration files:
+You can also create `connection` resources in configuration files:
 
 ```sh
 vi ~/.flowpipe/config/openai.fpc
 ```
 
 ```hcl
-credential "openai" "default" {
+connection "openai" "default" {
   api_key = "sk-..."
 }
 ```
 
-For more information on credentials in Flowpipe, please see [Managing Credentials](https://flowpipe.io/docs/run/credentials).
+For more information on connections in Flowpipe, please see [Managing Connections](https://flowpipe.io/docs/run/connections).
 
 ### Usage
 
@@ -96,13 +96,13 @@ flowpipe pipeline list
 Run a pipeline:
 
 ```sh
-flowpipe pipeline run create_chat_completion  --arg 'system_content=You are a helpful assistant.' --arg 'user_content=Hello!'
+flowpipe pipeline run create_chat_completion  --arg 'system_content=You are a helpful assistant.' --arg 'user_content=Hello!' --arg 'model=gpt-3.5-turbo' --arg 'max_tokens=50' --arg 'temperature=1'
 ```
 
-To use a specific `credential`, specify the `cred` pipeline argument:
+To use a specific `connection`, specify the `conn` pipeline argument:
 
 ```sh
-flowpipe pipeline run create_chat_completion  --arg 'system_content=You are a helpful assistant.' --arg 'user_content=Hello!' --arg cred=openai_profile
+flowpipe pipeline run create_chat_completion  --arg 'system_content=You are a helpful assistant.' --arg 'user_content=Hello!' --arg 'model=gpt-3.5-turbo' --arg 'max_tokens=50' --arg 'temperature=1' --arg 'conn=connection.openai.my_conn'
 ```
 
 ## Open Source & Contributing
