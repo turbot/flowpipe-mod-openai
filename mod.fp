@@ -11,4 +11,10 @@ mod "openai" {
     description = "Run pipelines to supercharge your OpenAI workflows using Flowpipe."
     image       = "/images/mods/turbot/openai-social-graphic.png"
   }
+
+  require {
+    flowpipe {
+      min_version = "1.0.0"
+    }
+  }
 }
